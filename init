@@ -36,6 +36,10 @@ export quiet
 mount -t devtmpfs -o nosuid,mode=0755 udev /dev
 mkdir /dev/pts
 mount -t devpts -o noexec,nosuid,gid=5,mode=0620 devpts /dev/pts || true
+ln -s /proc/self/fd   /dev/fd
+ln -s /proc/self/fd/0 /dev/stdin
+ln -s /proc/self/fd/1 /dev/stdout
+ln -s /proc/self/fd/2 /dev/stderr
 
 # Export the dpkg architecture
 export DPKG_ARCH=
